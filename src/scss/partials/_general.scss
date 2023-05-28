@@ -1,0 +1,58 @@
+@import 'vars';
+@import '../mixins/responsive';
+
+* , *::after , *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: $base-font-size;
+    min-height: 100vh;
+}
+body{
+    color : $main-text-color;
+    position: relative;
+    //opacity: 0;
+    transition: opacity .3s linear;
+    &.visible{
+      opacity: 1;
+    }
+}
+body , a{
+  color: $blue-3;
+}
+// container
+.container{
+    max-width: calc( #{$max-width} + (2 * 2rem) ) ;
+    margin: 0 auto;
+    padding: 0 2rem;
+    @include mq(sm){
+      max-width: 100%;
+      padding: 0 1rem;
+  }
+}
+// images
+img {
+  max-width: 100%;
+}
+.rounded{
+  border-radius: 50%;
+}
+
+//links
+a {
+  text-decoration: none;
+}
+
+// inputs
+input,
+textarea {
+  font-family: $base-font-size;
+}
+p{
+  line-height: 1.6em;
+}
+ul,ol{
+  list-style: none;
+}

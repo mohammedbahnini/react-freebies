@@ -1,0 +1,61 @@
+$red : rgba(249, 73, 98, 1);
+$blue-1 : rgba(2, 7, 62, 1);
+$blue-2 : rgba(15, 33, 55, 1);
+$blue-3 : rgba(52, 61, 72, 1);
+$blue-4 : rgba(86, 98, 114, 1);
+$blue-5 : rgba(49, 131, 255, 1);
+$green : rgba(63, 219, 177, 1);  
+$grayish-blue : rgba(24, 54, 86, 1);
+$white : rgba(255, 255, 255, 1);
+$soft-gray : rgba(249, 250, 252, 1);
+
+// main colors
+$colors : (
+    red : $red , 
+    blue-1 :$blue-1  , 
+    blue-2 :$blue-2 ,
+    blue-3 :$blue-3 , 
+    blue-4: $blue-4 ,
+    blue-5: $blue-5 , 
+    green : $green , 
+    grayish-blue : $grayish-blue , 
+    white : $white , 
+    soft-gray : $soft-gray 
+);
+$main-text-color : $blue-3;
+
+// fonts
+$base-font-size : 16px;
+$fonts : (
+    1 : ('DM Sans', sans-serif) , 
+    2 : ('Bree Serif', serif)
+);
+$font-weights : (100,200,300,400,500,600,700,800,900);
+$font-size-step : .25;
+$line-height-step : .1;
+
+// spacing
+$margin-step : 0.25;
+$padding-step : 0.25;
+$flex-gap-step : 0.25;
+
+// layout
+$max-width : 1352px;
+
+// breakpoints
+$breakpoints: (
+    xsm : 576px,
+    sm : 768px ,
+    md : 992px , 
+    lg : 1200px,
+    xlg : 1600px
+);
+
+// responsive prefixes
+$responsive-prefixes:(
+    xsm : 'on-xsm-',
+    sm : 'on-sm-',
+    md: 'on-md-',
+    lg : 'on-lg-',
+    xlg : 'on-xlg-'
+);

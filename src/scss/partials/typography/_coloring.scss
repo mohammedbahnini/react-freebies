@@ -1,0 +1,30 @@
+@import '../vars';
+@import '../../functions/functions';
+
+$reverse-breakpoints : reverse-map($breakpoints);
+
+@mixin generate-colors($prefix: '') {
+
+    @each $color-name,$color-value in $colors {
+
+        .#{$prefix}#{$color-name}-text {
+            color: $color-value;
+        }
+    }
+}
+
+
+// text colors
+@include generate-colors();
+
+// text colots for all versions with prefixes
+@each $breakpoint , $value  in $reverse-breakpoints{
+        
+        @media screen and (max-width : $value){
+            
+            $prefix: map-get($responsive-prefixes , $breakpoint);
+            @include generate-colors($prefix);
+  
+        }
+}
+        

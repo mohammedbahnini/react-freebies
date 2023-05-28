@@ -1,0 +1,36 @@
+@import '../partials/vars';
+
+@mixin mq($size){
+    @if map-has-key($breakpoints,$size){
+        $breakpoint : map-get($breakpoints , $size);
+        @media screen and (max-width : $breakpoint){
+            @content;
+        }
+    }
+    @else{
+         @media screen and (max-width : $size){
+            @content;
+        }
+    }
+}
+
+$res : (
+    xsm : '.on-xsm-',
+    sm : '.on-sm-',
+    md : '.on-md-',
+    lg : '.on-lg-',
+    xlg : '.on-xlg-'
+);
+
+
+@mixin all-medias($class){
+    .#{$class}{
+        @content;
+    }
+    @each $prefix , $prefix-class in $res{
+        @include mq($prefix){
+            @content ;
+        }
+    }
+
+}

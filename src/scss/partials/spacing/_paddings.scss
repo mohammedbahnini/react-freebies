@@ -1,0 +1,61 @@
+@import '../../partials/vars';
+
+$prefixes : reverse-map($responsive-prefixes);
+
+@mixin generate-paddings($prefix : ''){
+
+
+    @for $index from 0 through 100 {
+        $step : $padding-step * 4 * $index;
+        $padding-value: $padding-step * $index;
+
+        .#{$prefix}p-y-#{$step}{
+            padding-top: #{$padding-value}rem;
+            padding-bottom: #{$padding-value}rem;
+    
+        }
+        .#{$prefix}p-x-#{$step}{
+            padding-left: #{$padding-value}rem;
+            padding-right: #{$padding-value}rem;
+        }
+
+        
+    }
+    @for $index from 0 through 100 {
+        $step : $padding-step * 4 * $index;
+        $padding-value: $padding-step * $index;
+        
+        .#{$prefix}p-t-#{$step}{
+            padding-top: #{$padding-value}rem;
+        }
+        .#{$prefix}p-r-#{$step}{
+            padding-right: #{$padding-value}rem;
+        }
+        .#{$prefix}p-b-#{$step}{
+            padding-bottom: #{$padding-value}rem;
+        }
+        .#{$prefix}p-l-#{$step}{
+            padding-left: #{$padding-value}rem;
+        }
+        
+    }
+    
+}
+
+@mixin paddings()
+{
+    @include generate-paddings();
+
+    @each $breakpoint , $prefix-class  in $prefixes{
+        
+        @media screen and (max-width : map-get($breakpoints , $breakpoint) ){
+            
+            @include generate-paddings($prefix-class);
+  
+        }
+    }
+     
+    
+}
+
+@include paddings();

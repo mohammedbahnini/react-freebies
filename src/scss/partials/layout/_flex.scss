@@ -1,0 +1,91 @@
+@import '../vars';
+@import '../../functions/functions';
+
+$prefixes : reverse-map($responsive-prefixes);
+
+@mixin layout-properties($prefix: ''){
+    .#{$prefix}block{
+        display: block;
+    }
+    .#{$prefix}inline-block{
+       display: inline-block;
+    }
+    .#{$prefix}inline{
+        display: inline;
+    }
+    .#{$prefix}hide{
+        display: none;
+    }
+    
+
+    .#{$prefix}flex{
+        display: flex;
+    }
+    .#{$prefix}flex-col{
+        flex-direction: column;
+    }
+    .#{$prefix}flex-reverse{
+        flex-direction: row-reverse;
+    }
+    .#{$prefix}flex-col-reverse{
+        flex-direction: column-reverse;
+    }
+    .#{$prefix}flex-wrap{
+        flex-wrap: wrap;
+    }
+    .#{$prefix}ai-start{
+        align-items: start;
+    }
+    .#{$prefix}ai-end{
+        align-items: end;
+    }
+    .#{$prefix}ai-center{
+        align-items: center;
+    }
+    .#{$prefix}jc-start{
+        justify-content: start;
+    }
+    .#{$prefix}jc-end{
+        justify-content: end;
+    }
+    .#{$prefix}jc-space-around{
+        justify-content: space-around;
+    }
+    .#{$prefix}jc-space-between{
+        justify-content: space-between;
+    }
+    .#{$prefix}jc-space-evenly{
+        justify-content: space-evenly;
+    }
+    .#{$prefix}jc-center{
+        justify-content: center;
+    }
+
+    @for $i from 0 through 10{
+        .#{$prefix}flex-shrink-#{$i}{
+            flex-shrink: $i;
+        }
+    }
+
+    @for $i from 0 through 10{
+        .#{$prefix}flex-grow-#{$i}{
+            flex-shrink: $i;
+        }
+    }
+    
+    
+
+}
+
+
+@include layout-properties();
+
+
+@each $breakpoint , $prefix-class  in $prefixes{
+    
+    @media screen and (max-width : map-get($breakpoints , $breakpoint)){
+        
+        @include layout-properties($prefix-class);
+
+    }
+}

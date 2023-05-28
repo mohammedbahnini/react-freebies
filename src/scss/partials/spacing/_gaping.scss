@@ -1,0 +1,35 @@
+@import '../../partials/vars';
+
+$prefixes : reverse-map($responsive-prefixes);
+
+@mixin generate-gapping($prefix : ''){
+
+
+    @for $index from 0 through 50 {
+        $step : $padding-step * 4 * $index;
+        $gap-value: $padding-step * $index;
+
+
+        .#{$prefix}gap-#{$step}{
+            gap: #{$gap-value}rem;
+        }
+        .#{$prefix}col-gap-#{$step}{
+            column-gap: #{$gap-value}rem;
+        }
+        .#{$prefix}row-gap-#{$step}{
+            row-gap: #{$gap-value}rem;
+        }
+    }
+    
+}
+
+@include generate-gapping();
+
+@each $breakpoint , $prefix-class  in $prefixes{
+    
+    @media screen and (max-width : map-get($breakpoints , $breakpoint) ){
+        
+        @include generate-gapping($prefix-class);
+
+    }
+}

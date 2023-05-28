@@ -1,0 +1,29 @@
+@import '../vars';
+@import '../../functions/functions';
+
+$reverse-breakpoints : reverse-map($breakpoints);
+
+@mixin generate-background-colors($prefix: '') {
+
+    @each $color-name, $color-value in $colors {
+        .#{$prefix}bg-#{$color-name} {
+            background-color: $color-value;
+        }
+    }
+}
+
+
+// background colors
+@include generate-background-colors();
+
+// background colors for all versions with prefixes
+@each $breakpoint , $value  in $reverse-breakpoints{
+        
+        @media screen and (max-width : $value){
+            
+            $prefix: map-get($responsive-prefixes , $breakpoint);
+            @include generate-background-colors($prefix);
+  
+        }
+}
+        

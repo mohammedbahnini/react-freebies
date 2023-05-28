@@ -1,0 +1,26 @@
+.team{
+    &__contact{
+        border-radius: 10px;
+        position: relative;
+    }
+    &__contact--btn{
+        letter-spacing: 2px;
+        position: relative;
+        &::before{
+            content: url(../../assets/rays-top.svg);
+            position: absolute;
+            top: -.8rem;
+            left: 50%;
+            transform: translate(-50%  , -100%);
+            
+        }
+        &::after{
+            content: url(../../assets/rays-bottom.svg);
+            position: absolute;
+            bottom: -.8rem;
+            left: 50%;
+            transform: translate(-50%  , 100%);
+
+        }
+    }
+}

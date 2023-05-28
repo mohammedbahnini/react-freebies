@@ -1,0 +1,25 @@
+@import '../partials/vars';
+@import 'responsive';
+
+@mixin with-prefixes($class){
+
+    @each $item in $responsive-prefixes{
+
+        @if( type-of($item) == 'string'){
+            #{ $item +''+$class}{
+                @content ;
+            }
+        }      
+        @else {
+  
+            #{ nth($item ,2) +''+$class}{
+                @include mq(nth($item,1)){
+                    @content;
+                }
+            }
+
+        }
+
+    }
+    
+}

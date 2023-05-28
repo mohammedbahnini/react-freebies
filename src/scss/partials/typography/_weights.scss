@@ -1,0 +1,30 @@
+@import '../vars';
+@import '../../functions/functions';
+
+$reverse-breakpoints : reverse-map($breakpoints);
+
+@mixin generate-weights($prefix: '') {
+
+    @each $weight in $font-weights {
+
+        .#{$prefix + 'fw-' + $weight} {
+            font-weight: $weight;
+        }
+    }
+}
+
+
+// text colors
+@include generate-weights();
+
+// text colots for all versions with prefixes
+@each $breakpoint , $value  in $reverse-breakpoints{
+        
+        @media screen and (max-width : $value){
+            
+            $prefix: map-get($responsive-prefixes , $breakpoint);
+            @include generate-weights($prefix);
+  
+        }
+}
+        

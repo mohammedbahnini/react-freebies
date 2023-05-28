@@ -1,0 +1,44 @@
+@import '../vars';
+@import '../../functions/functions';
+
+$reverse-breakpoints : reverse-map($breakpoints);
+
+@mixin generate-line-heights($prefix: '') {
+
+
+    @for $i from 1 through 2 {
+
+        @for $j from 0 through 10 {
+
+            @if($j ==10 or $j == 0) {
+                .#{$prefix}lh-#{$i+ $j / 10 } {
+                    line-height : #{$i + $j  / 10}em;
+                }
+            }
+
+            @else {
+                .#{$prefix}lh-#{$i}-#{$j} {
+                    line-height : #{$i + $j  / 10}em;
+                }
+            }
+
+
+        }
+    }
+}
+
+
+// text colors
+@include generate-line-heights();
+
+// text colots for all versions with prefixes
+@each $breakpoint ,
+$value in $reverse-breakpoints {
+
+    @media screen and (max-width : $value) {
+
+        $prefix: map-get($responsive-prefixes , $breakpoint);
+        @include generate-line-heights($prefix);
+
+    }
+}

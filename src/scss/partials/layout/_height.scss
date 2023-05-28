@@ -1,0 +1,33 @@
+@import '../../partials/vars';
+
+$prefixes : reverse-map($responsive-prefixes);
+
+
+
+@mixin generate-heights($prefix : ''){
+
+    
+
+    @for $index from 0 through 60 {
+        $step : $padding-step * 4 * $index;
+        $height-value: $padding-step * $index;
+
+
+        .#{$prefix}height-#{$step}{
+            height: #{$height-value}rem;
+        }
+
+    }
+    
+}
+
+@include generate-heights();
+
+@each $breakpoint , $prefix-class  in $prefixes{
+    
+    @media screen and (max-width : map-get($breakpoints , $breakpoint) ){
+        
+        @include generate-heights($prefix-class);
+
+    }
+}

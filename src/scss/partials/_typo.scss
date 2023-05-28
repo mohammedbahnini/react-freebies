@@ -1,0 +1,22 @@
+@import 'vars';
+@import '../mixins/prefixes';
+@import 'typography/fonts-family';
+@import 'typography/coloring';
+@import 'typography/weights';
+@import 'typography/font-sizes';
+@import 'typography/line_height';
+@import 'typography/align';
+
+// transform
+.uppercase {
+  text-transform: uppercase;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+
+
+// right to left
+.rtl {
+  direction: rtl;
+}

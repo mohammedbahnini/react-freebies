@@ -1,0 +1,38 @@
+header{
+    .links{
+        &__item a{
+            cursor: pointer;
+        }
+        &__item--active a{
+            color: $red;
+        }
+        &__item--get-started a {
+            position: relative;
+        }
+        &__item--get-started a::after{
+            content: url(../../assets/underline.svg);
+            width: 100%;
+            position: absolute;
+            bottom: -1rem;
+            display: block;
+        }
+
+    }
+    form{
+        input[type=email]{
+            border: 1px solid rgba($blue-3, .20);
+            outline: none;
+            line-height: 2.5em;
+            padding: 0.625rem 1.5rem ;
+            border-radius: 5px;
+            flex: 1;
+        }
+        input[type=submit]{
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            padding: 1em 2em;
+          
+        }
+    }
+}

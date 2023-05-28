@@ -1,0 +1,28 @@
+@import '../../partials/vars';
+
+$reverse-breakpoints : reverse-map($breakpoints);
+
+@mixin generate-sizes($prefix: '') {
+
+    @for $i from 1 through 200 {
+        .#{$prefix+'fs-'+$i}{
+            font-size : #{$i*$font-size-step }rem;
+        }
+    }
+}
+
+
+// text colors
+@include generate-sizes();
+
+// text colots for all versions with prefixes
+@each $breakpoint , $value  in $reverse-breakpoints{
+        
+        @media screen and (max-width : $value){
+            
+            $prefix: map-get($responsive-prefixes , $breakpoint);
+            @include generate-sizes($prefix);
+  
+        }
+}
+        

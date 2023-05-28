@@ -1,0 +1,53 @@
+@import '../../partials/vars';
+
+$prefixes : reverse-map($responsive-prefixes);
+
+@mixin generate-margins($prefix : ''){
+
+    .#{$prefix}m-x-auto{
+        margin-left: auto;
+        margin-right: auto; 
+    }
+
+    @for $index from 0 through 50 {
+        $step : $margin-step * 4 * $index;
+        $margin-value: $margin-step * $index;
+
+        .#{$prefix}m-t-#{$step}{
+        margin-top: #{$margin-value}rem;
+        }
+        .#{$prefix}m-r-#{$step}{
+            margin-right: #{$margin-value}rem;
+        }
+        .#{$prefix}m-b-#{$step}{
+            margin-bottom: #{$margin-value}rem;
+        }
+        .#{$prefix}m-l-#{$step}{
+            margin-left: #{$margin-value}rem;
+        }
+        .#{$prefix}m-y-#{$step}{
+            margin-top: #{$margin-value}rem;
+            margin-bottom: #{$margin-value}rem;
+    
+        }
+    }
+    
+}
+
+@mixin margins()
+{
+    @include generate-margins();
+
+    @each $breakpoint , $prefix-class  in $prefixes{
+        
+        @media screen and (max-width : map-get($breakpoints , $breakpoint) ){
+            
+            @include generate-margins($prefix-class);
+  
+        }
+}
+     
+    
+}
+
+@include margins();

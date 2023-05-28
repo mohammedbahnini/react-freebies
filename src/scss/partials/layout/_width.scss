@@ -1,0 +1,58 @@
+@import '../../partials/vars';
+
+$prefixes : reverse-map($responsive-prefixes);
+$max-width-step : 0.25;
+
+@mixin generate-widths($prefix : ''){
+
+    // max width (rem) 
+    @for $i from 1 through 400 {
+
+        $step : $max-width-step * 4 * $i;
+        $max-width-value: $max-width-step  * $i;
+
+
+        .#{$prefix}max-width-#{$step}{
+            max-width: #{$max-width-value}rem;
+        }
+    }
+
+    // width percentage
+    @for $i from 1 through 100 {
+        .#{$prefix}width-#{$i}{
+            width: #{$i * 1%};
+        }
+    }
+
+    // width (rem) 
+    @for $i from 1 through 400 {
+
+        $step : $max-width-step * 4 * $i;
+        $width-value: $max-width-step  * $i;
+
+        .#{$prefix}width-#{$step}-rem{
+            width: #{$width-value}rem;
+        }
+    }
+
+    // width auto
+    .#{$prefix}width-auto{
+        width: auto;
+    }
+    
+    
+}
+
+
+@include generate-widths();
+
+@each $breakpoint , $prefix-class  in $prefixes{
+    
+    @media screen and (max-width : map-get($breakpoints , $breakpoint) ){
+            
+        @include generate-widths($prefix-class);
+
+    }
+
+    
+}

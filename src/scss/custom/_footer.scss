@@ -1,0 +1,16 @@
+footer{
+    .container{
+        margin-top: -8rem;
+        @include mq(sm){
+            margin-top: -10rem;
+        }
+    }
+    .info{
+        &__info a{
+            display: block;
+        }
+        &__links a:first-of-type{
+            border-right: 1px solid $blue-2;
+        }
+    }
+}

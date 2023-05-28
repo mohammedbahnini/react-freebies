@@ -1,0 +1,29 @@
+@import '../vars';
+@import '../../functions/functions';
+
+$reverse-breakpoints : reverse-map($breakpoints);
+
+@mixin generate-z-index($prefix: '') {
+
+    @for $i from -20 through 20{
+        .#{$prefix}z-index-#{$i} {
+            z-index : $i;
+        }
+    }
+}
+
+
+// z index
+@include generate-z-index();
+
+
+@each $breakpoint , $value  in $reverse-breakpoints{
+        
+        @media screen and (max-width : $value){
+            
+            $prefix: map-get($responsive-prefixes , $breakpoint);
+            @include generate-z-index($prefix);
+  
+        }
+}
+        

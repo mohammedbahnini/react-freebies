@@ -1,0 +1,25 @@
+@import '../../partials/vars';
+@import '../../functions/functions';
+$prefixes : reverse-map($responsive-prefixes);
+
+@mixin align-properties($prefix : ''){
+    .#{$prefix}align-left{
+        text-align: left;
+    }
+    .#{$prefix}align-right{
+        text-align: right;
+    }
+    .#{$prefix}align-center{
+        text-align: center;
+    }
+
+}
+
+
+// align
+@include align-properties();    
+@each $breakpoint , $prefix-class in $prefixes{
+    @media screen and (max-width : map-get($breakpoints , $breakpoint))  {
+        @include align-properties($prefix-class);
+    }
+}
