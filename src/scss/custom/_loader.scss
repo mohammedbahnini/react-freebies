@@ -3,15 +3,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity  1s linear , visibility 1s linear;
+    transition: opacity  500ms linear , visibility 1s linear;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     opacity: 1;
-    transition-delay: s;
     &.fade-out{
         opacity: 0;
+        visibility: hidden;
     }
 
 

@@ -30,14 +30,14 @@ class  App extends Component {
       this.setState({
         isLoading : false
       });
-    }, 1000);
+    }, 500);
 
 
    setTimeout(() => {
     this.setState({
       isLoaded : true 
     })
-   }, 1000);
+   }, 500);
   }
   render(){
     
