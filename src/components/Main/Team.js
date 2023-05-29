@@ -33,7 +33,7 @@ export default class Team extends Component{
                 </div>
 
                 <div class="team__img flex">
-                    <img src="assets/team.svg" alt="Team" />
+                    <img src="assets/team.png" alt="Team" />
                 </div>
                 </div>
 
